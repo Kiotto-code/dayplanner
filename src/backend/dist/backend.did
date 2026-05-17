@@ -1,0 +1,32 @@
+type UpdateSlotArgs = 
+ record {
+   description: text;
+   endTime: int;
+   id: SlotId;
+   startTime: int;
+   title: text;
+ };
+type TimeSlotView = 
+ record {
+   completed: bool;
+   description: text;
+   endTime: int;
+   id: SlotId;
+   startTime: int;
+   title: text;
+ };
+type SlotId = nat;
+type CreateSlotArgs = 
+ record {
+   description: text;
+   endTime: int;
+   startTime: int;
+   title: text;
+ };
+service : {
+  createSlot: (args: CreateSlotArgs) -> (TimeSlotView);
+  deleteSlot: (id: SlotId) -> (bool);
+  listSlots: () -> (vec TimeSlotView) query;
+  toggleSlotComplete: (id: SlotId) -> (opt TimeSlotView);
+  updateSlot: (args: UpdateSlotArgs) -> (opt TimeSlotView);
+}

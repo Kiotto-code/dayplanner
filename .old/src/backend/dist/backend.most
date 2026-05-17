@@ -1,0 +1,22 @@
+// Version: 1.0.0
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type SlotId__391280918 = Nat;
+type TimeSlot__749830266 =
+  {
+    var completed : Bool;
+    var description : Text;
+    var endTime : Int;
+    id : SlotId__391280918;
+    var startTime : Int;
+    var title : Text
+  };
+actor {
+  stable slots :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?TimeSlot__749830266]];
+      var elementIndex : Nat__490723111
+    };
+  stable state : {var nextId : SlotId__391280918}
+};

@@ -1,0 +1,19 @@
+{
+  "overview": "A personal timetable app to plan and track your daily tasks and work. Create time slots, mark tasks complete, and stay on top of your schedule — all saved automatically.",
+  "features": [
+    "Create and manage time slots with start/end times and task descriptions",
+    "Daily schedule view with tasks in chronological order",
+    "Mark tasks as complete with visual indicators",
+    "Visual distinction between past, current, and upcoming tasks",
+    "All data persists across browser sessions"
+  ],
+  "category": "productivity",
+  "tags": [
+    "timetable",
+    "productivity",
+    "schedule",
+    "tasks",
+    "planner"
+  ],
+  "last_updated": "2026-05-17T04:17:12.302Z"
+}
