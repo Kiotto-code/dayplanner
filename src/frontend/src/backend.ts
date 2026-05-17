@@ -89,12 +89,20 @@ export class ExternalBlob {
         return this;
     }
 }
+export interface CreateSlotArgs {
+    startTime: bigint;
+    title: string;
+    endTime: bigint;
+    description: string;
+    category: SlotCategory;
+}
 export interface UpdateSlotArgs {
     id: SlotId;
     startTime: bigint;
     title: string;
     endTime: bigint;
     description: string;
+    category: SlotCategory;
 }
 export interface TimeSlotView {
     id: SlotId;
@@ -103,13 +111,13 @@ export interface TimeSlotView {
     endTime: bigint;
     completed: boolean;
     description: string;
+    category: SlotCategory;
 }
 export type SlotId = bigint;
-export interface CreateSlotArgs {
-    startTime: bigint;
-    title: string;
-    endTime: bigint;
-    description: string;
+export enum SlotCategory {
+    work = "work",
+    personal = "personal",
+    study = "study"
 }
 export interface backendInterface {
     createSlot(args: CreateSlotArgs): Promise<TimeSlotView>;
@@ -118,21 +126,21 @@ export interface backendInterface {
     toggleSlotComplete(id: SlotId): Promise<TimeSlotView | null>;
     updateSlot(args: UpdateSlotArgs): Promise<TimeSlotView | null>;
 }
-import type { TimeSlotView as _TimeSlotView } from "./declarations/backend.did.d.ts";
+import type { CreateSlotArgs as _CreateSlotArgs, SlotCategory as _SlotCategory, SlotId as _SlotId, TimeSlotView as _TimeSlotView, UpdateSlotArgs as _UpdateSlotArgs } from "./declarations/backend.did.d.ts";
 export class Backend implements backendInterface {
     constructor(private actor: ActorSubclass<_SERVICE>, private _uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, private _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, private processError?: (error: unknown) => never){}
     async createSlot(arg0: CreateSlotArgs): Promise<TimeSlotView> {
         if (this.processError) {
             try {
-                const result = await this.actor.createSlot(arg0);
-                return result;
+                const result = await this.actor.createSlot(to_candid_CreateSlotArgs_n1(this._uploadFile, this._downloadFile, arg0));
+                return from_candid_TimeSlotView_n5(this._uploadFile, this._downloadFile, result);
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.createSlot(arg0);
-            return result;
+            const result = await this.actor.createSlot(to_candid_CreateSlotArgs_n1(this._uploadFile, this._downloadFile, arg0));
+            return from_candid_TimeSlotView_n5(this._uploadFile, this._downloadFile, result);
         }
     }
     async deleteSlot(arg0: SlotId): Promise<boolean> {
@@ -153,47 +161,161 @@ export class Backend implements backendInterface {
         if (this.processError) {
             try {
                 const result = await this.actor.listSlots();
-                return result;
+                return from_candid_vec_n9(this._uploadFile, this._downloadFile, result);
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
             const result = await this.actor.listSlots();
-            return result;
+            return from_candid_vec_n9(this._uploadFile, this._downloadFile, result);
         }
     }
     async toggleSlotComplete(arg0: SlotId): Promise<TimeSlotView | null> {
         if (this.processError) {
             try {
                 const result = await this.actor.toggleSlotComplete(arg0);
-                return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+                return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
             const result = await this.actor.toggleSlotComplete(arg0);
-            return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+            return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
         }
     }
     async updateSlot(arg0: UpdateSlotArgs): Promise<TimeSlotView | null> {
         if (this.processError) {
             try {
-                const result = await this.actor.updateSlot(arg0);
-                return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+                const result = await this.actor.updateSlot(to_candid_UpdateSlotArgs_n11(this._uploadFile, this._downloadFile, arg0));
+                return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.updateSlot(arg0);
-            return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+            const result = await this.actor.updateSlot(to_candid_UpdateSlotArgs_n11(this._uploadFile, this._downloadFile, arg0));
+            return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
         }
     }
 }
-function from_candid_opt_n1(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: [] | [_TimeSlotView]): TimeSlotView | null {
-    return value.length === 0 ? null : value[0];
+function from_candid_SlotCategory_n7(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: _SlotCategory): SlotCategory {
+    return from_candid_variant_n8(_uploadFile, _downloadFile, value);
+}
+function from_candid_TimeSlotView_n5(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: _TimeSlotView): TimeSlotView {
+    return from_candid_record_n6(_uploadFile, _downloadFile, value);
+}
+function from_candid_opt_n10(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: [] | [_TimeSlotView]): TimeSlotView | null {
+    return value.length === 0 ? null : from_candid_TimeSlotView_n5(_uploadFile, _downloadFile, value[0]);
+}
+function from_candid_record_n6(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
+    id: _SlotId;
+    startTime: bigint;
+    title: string;
+    endTime: bigint;
+    completed: boolean;
+    description: string;
+    category: _SlotCategory;
+}): {
+    id: SlotId;
+    startTime: bigint;
+    title: string;
+    endTime: bigint;
+    completed: boolean;
+    description: string;
+    category: SlotCategory;
+} {
+    return {
+        id: value.id,
+        startTime: value.startTime,
+        title: value.title,
+        endTime: value.endTime,
+        completed: value.completed,
+        description: value.description,
+        category: from_candid_SlotCategory_n7(_uploadFile, _downloadFile, value.category)
+    };
+}
+function from_candid_variant_n8(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
+    work: null;
+} | {
+    personal: null;
+} | {
+    study: null;
+}): SlotCategory {
+    return "work" in value ? SlotCategory.work : "personal" in value ? SlotCategory.personal : "study" in value ? SlotCategory.study : value;
+}
+function from_candid_vec_n9(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: Array<_TimeSlotView>): Array<TimeSlotView> {
+    return value.map((x)=>from_candid_TimeSlotView_n5(_uploadFile, _downloadFile, x));
+}
+function to_candid_CreateSlotArgs_n1(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: CreateSlotArgs): _CreateSlotArgs {
+    return to_candid_record_n2(_uploadFile, _downloadFile, value);
+}
+function to_candid_SlotCategory_n3(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: SlotCategory): _SlotCategory {
+    return to_candid_variant_n4(_uploadFile, _downloadFile, value);
+}
+function to_candid_UpdateSlotArgs_n11(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: UpdateSlotArgs): _UpdateSlotArgs {
+    return to_candid_record_n12(_uploadFile, _downloadFile, value);
+}
+function to_candid_record_n12(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
+    id: SlotId;
+    startTime: bigint;
+    title: string;
+    endTime: bigint;
+    description: string;
+    category: SlotCategory;
+}): {
+    id: _SlotId;
+    startTime: bigint;
+    title: string;
+    endTime: bigint;
+    description: string;
+    category: _SlotCategory;
+} {
+    return {
+        id: value.id,
+        startTime: value.startTime,
+        title: value.title,
+        endTime: value.endTime,
+        description: value.description,
+        category: to_candid_SlotCategory_n3(_uploadFile, _downloadFile, value.category)
+    };
+}
+function to_candid_record_n2(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: {
+    startTime: bigint;
+    title: string;
+    endTime: bigint;
+    description: string;
+    category: SlotCategory;
+}): {
+    startTime: bigint;
+    title: string;
+    endTime: bigint;
+    description: string;
+    category: _SlotCategory;
+} {
+    return {
+        startTime: value.startTime,
+        title: value.title,
+        endTime: value.endTime,
+        description: value.description,
+        category: to_candid_SlotCategory_n3(_uploadFile, _downloadFile, value.category)
+    };
+}
+function to_candid_variant_n4(_uploadFile: (file: ExternalBlob) => Promise<Uint8Array>, _downloadFile: (file: Uint8Array) => Promise<ExternalBlob>, value: SlotCategory): {
+    work: null;
+} | {
+    personal: null;
+} | {
+    study: null;
+} {
+    return value == SlotCategory.work ? {
+        work: null
+    } : value == SlotCategory.personal ? {
+        personal: null
+    } : value == SlotCategory.study ? {
+        study: null
+    } : value;
 }
 export interface CreateActorOptions {
     agent?: Agent;

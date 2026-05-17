@@ -15,7 +15,11 @@ export interface CreateSlotArgs {
   'title' : string,
   'endTime' : bigint,
   'description' : string,
+  'category' : SlotCategory,
 }
+export type SlotCategory = { 'work' : null } |
+  { 'personal' : null } |
+  { 'study' : null };
 export type SlotId = bigint;
 export interface TimeSlotView {
   'id' : SlotId,
@@ -24,6 +28,7 @@ export interface TimeSlotView {
   'endTime' : bigint,
   'completed' : boolean,
   'description' : string,
+  'category' : SlotCategory,
 }
 export interface UpdateSlotArgs {
   'id' : SlotId,
@@ -31,6 +36,7 @@ export interface UpdateSlotArgs {
   'title' : string,
   'endTime' : bigint,
   'description' : string,
+  'category' : SlotCategory,
 }
 export interface _SERVICE {
   'createSlot' : ActorMethod<[CreateSlotArgs], TimeSlotView>,

@@ -1,19 +1,21 @@
 {
-  "overview": "A personal timetable app to plan and track your daily tasks and work. Create time slots, mark tasks complete, and stay on top of your schedule — all saved automatically.",
+  "overview": "DayPlanner is a personal schedule manager that helps you organize work tasks, personal errands, and study sessions. View your day or the full week at a glance, navigate between dates, and filter tasks by category to stay focused.",
   "features": [
-    "Create and manage time slots with start/end times and task descriptions",
-    "Daily schedule view with tasks in chronological order",
-    "Mark tasks as complete with visual indicators",
-    "Visual distinction between past, current, and upcoming tasks",
-    "All data persists across browser sessions"
+    "Day and week views with date navigation",
+    "Task categories: Work, Personal, Study with color coding",
+    "Category filtering to focus on what matters",
+    "Timed tasks with start and end times",
+    "Task completion tracking",
+    "Add, edit, and delete tasks easily"
   ],
   "category": "productivity",
   "tags": [
     "timetable",
-    "productivity",
     "schedule",
+    "planner",
+    "productivity",
     "tasks",
-    "planner"
+    "calendar"
   ],
-  "last_updated": "2026-05-17T04:17:12.302Z"
+  "last_updated": "2026-05-17T09:07:50.178Z"
 }

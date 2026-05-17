@@ -1,9 +1,28 @@
-// Version: 1.0.0
+// Version: 3.0.0
+type List__415060402<T> = List__790383201<T>;
+type List__790383201<T> =
+  {
+    var blockIndex : Nat__490723111;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__490723111
+  };
 type Nat__490723111 = Nat__920180692;
 type Nat__920180692 = Nat;
+type OldTimeSlot__804489263 =
+  {
+    var completed : Bool;
+    var description : Text;
+    var endTime : Int;
+    id : SlotId__114619093;
+    var startTime : Int;
+    var title : Text
+  };
+type SlotCategory__487554769 = {#personal; #study; #work};
+type SlotId__114619093 = Nat;
 type SlotId__391280918 = Nat;
 type TimeSlot__749830266 =
   {
+    var category : SlotCategory__487554769;
     var completed : Bool;
     var description : Text;
     var endTime : Int;
@@ -11,7 +30,10 @@ type TimeSlot__749830266 =
     var startTime : Int;
     var title : Text
   };
-actor {
+actor ({
+  in slots : List__415060402<OldTimeSlot__804489263>;
+  in state : {var nextId : SlotId__114619093}
+}, {
   stable slots :
     {
       var blockIndex : Nat__490723111;
@@ -19,4 +41,4 @@ actor {
       var elementIndex : Nat__490723111
     };
   stable state : {var nextId : SlotId__391280918}
-};
+});

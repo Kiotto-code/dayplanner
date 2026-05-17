@@ -34,6 +34,13 @@
     --input: 0.9 0.008 230;
     --ring: 0.42 0.14 240;
 
+    --category-work: oklch(0.55 0.18 240);
+    --category-work-bg: oklch(0.55 0.18 240 / 0.1);
+    --category-personal: oklch(0.6 0.14 170);
+    --category-personal-bg: oklch(0.6 0.14 170 / 0.1);
+    --category-study: oklch(0.65 0.15 55);
+    --category-study-bg: oklch(0.65 0.15 55 / 0.1);
+
     --chart-1: 0.42 0.14 240;
     --chart-2: 0.6 0.15 170;
     --chart-3: 0.55 0.22 25;
@@ -75,6 +82,13 @@
     --border: 0.28 0.012 230;
     --input: 0.28 0.012 230;
     --ring: 0.65 0.18 240;
+
+    --category-work: oklch(0.65 0.18 240);
+    --category-work-bg: oklch(0.65 0.18 240 / 0.12);
+    --category-personal: oklch(0.65 0.16 170);
+    --category-personal-bg: oklch(0.65 0.16 170 / 0.12);
+    --category-study: oklch(0.72 0.16 55);
+    --category-study-bg: oklch(0.72 0.16 55 / 0.12);
 
     --chart-1: 0.65 0.18 240;
     --chart-2: 0.65 0.18 170;

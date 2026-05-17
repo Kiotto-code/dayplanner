@@ -11,7 +11,18 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CheckCircle2, Circle, Clock, Edit2, Trash2 } from "lucide-react";
+import {
+  BookOpen,
+  Briefcase,
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  Circle,
+  Clock,
+  Edit2,
+  Trash2,
+  User,
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { AddSlotModal } from "../components/AddSlotModal";
@@ -24,11 +35,115 @@ import {
   useUpdateSlot,
 } from "../hooks/useSchedule";
 import {
+  type SlotCategory,
   type TimeSlot,
   type UpdateSlotInput,
   formatTime,
+  getCategoryLabel,
   getSlotStatus,
 } from "../types";
+
+// ─── Category helpers ───────────────────────────────────────────────────────
+
+const CATEGORY_META: Record<
+  SlotCategory,
+  { label: string; icon: React.ReactNode; style: React.CSSProperties }
+> = {
+  work: {
+    label: "Work",
+    icon: <Briefcase className="w-3 h-3" />,
+    style: {
+      borderColor: "var(--category-work)",
+      color: "var(--category-work)",
+      backgroundColor: "var(--category-work-bg)",
+    },
+  },
+  personal: {
+    label: "Personal",
+    icon: <User className="w-3 h-3" />,
+    style: {
+      borderColor: "var(--category-personal)",
+      color: "var(--category-personal)",
+      backgroundColor: "var(--category-personal-bg)",
+    },
+  },
+  study: {
+    label: "Study",
+    icon: <BookOpen className="w-3 h-3" />,
+    style: {
+      borderColor: "var(--category-study)",
+      color: "var(--category-study)",
+      backgroundColor: "var(--category-study-bg)",
+    },
+  },
+};
+
+function CategoryBadge({ category }: { category: SlotCategory }) {
+  const meta = CATEGORY_META[category];
+  return (
+    <span
+      className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md border text-[10px] font-medium leading-none"
+      style={meta.style}
+    >
+      {meta.icon}
+      {meta.label}
+    </span>
+  );
+}
+
+// ─── Date utilities ──────────────────────────────────────────────────────────
+
+function startOfDay(d: Date): Date {
+  const r = new Date(d);
+  r.setHours(0, 0, 0, 0);
+  return r;
+}
+
+function addDays(d: Date, n: number): Date {
+  const r = new Date(d);
+  r.setDate(r.getDate() + n);
+  return r;
+}
+
+function isSameDay(a: Date, b: Date): boolean {
+  return (
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate()
+  );
+}
+
+function getWeekStart(d: Date): Date {
+  const r = new Date(d);
+  r.setHours(0, 0, 0, 0);
+  const day = r.getDay(); // 0=Sun
+  r.setDate(r.getDate() - day + 1); // Mon as week start
+  if (day === 0) r.setDate(r.getDate() - 6);
+  return r;
+}
+
+function formatShortDate(d: Date): string {
+  return d.toLocaleDateString([], { month: "short", day: "numeric" });
+}
+
+function formatWeekLabel(weekStart: Date): string {
+  const end = addDays(weekStart, 6);
+  return `${formatShortDate(weekStart)} – ${formatShortDate(end)}`;
+}
+
+function formatDayLabel(d: Date): string {
+  const today = startOfDay(new Date());
+  if (isSameDay(d, today)) return "Today";
+  if (isSameDay(d, addDays(today, 1))) return "Tomorrow";
+  if (isSameDay(d, addDays(today, -1))) return "Yesterday";
+  return d.toLocaleDateString([], {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+// ─── SlotCard ────────────────────────────────────────────────────────────────
 
 function SlotCard({
   slot,
@@ -49,7 +164,7 @@ function SlotCard({
   const containerClass = [
     "relative rounded-xl border transition-smooth group overflow-hidden",
     status === "current" && !isCompleted
-      ? "bg-primary/5 border-primary/30 shadow-md slot-current"
+      ? "bg-primary/5 border-primary/30 shadow-md"
       : status === "past" && !isCompleted
         ? "bg-muted/30 border-border/60 opacity-65"
         : isCompleted
@@ -59,7 +174,6 @@ function SlotCard({
 
   return (
     <div className={containerClass} data-ocid={`schedule.item.${index}`}>
-      {/* Side accent bar */}
       {status === "current" && !isCompleted && (
         <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-xl" />
       )}
@@ -68,7 +182,6 @@ function SlotCard({
       )}
 
       <div className="pl-4 pr-3 pt-3 pb-0">
-        {/* Time row */}
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-1.5 text-sm font-display font-semibold text-foreground">
             <Clock className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" />
@@ -81,6 +194,7 @@ function SlotCard({
             </span>
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
+            <CategoryBadge category={slot.category} />
             {status === "current" && !isCompleted && (
               <Badge
                 variant="outline"
@@ -100,7 +214,6 @@ function SlotCard({
           </div>
         </div>
 
-        {/* Title with toggle */}
         <div className="flex items-center gap-2 mt-1.5">
           <button
             type="button"
@@ -129,7 +242,6 @@ function SlotCard({
           </p>
         </div>
 
-        {/* Description */}
         {slot.description && (
           <p className="text-sm text-muted-foreground mt-1 ml-6 line-clamp-2">
             {slot.description}
@@ -137,7 +249,6 @@ function SlotCard({
         )}
       </div>
 
-      {/* Action bar */}
       <div className="flex border-t border-border/60 mt-3">
         <button
           type="button"
@@ -165,6 +276,8 @@ function SlotCard({
   );
 }
 
+// ─── Empty state ─────────────────────────────────────────────────────────────
+
 function EmptyState({ onAdd }: { onAdd: () => void }) {
   return (
     <div
@@ -190,7 +303,150 @@ function EmptyState({ onAdd }: { onAdd: () => void }) {
   );
 }
 
+// ─── Week view cell ──────────────────────────────────────────────────────────
+
+function WeekDayCell({
+  day,
+  slots,
+  isToday,
+  isSelected,
+  onClick,
+}: {
+  day: Date;
+  slots: TimeSlot[];
+  isToday: boolean;
+  isSelected: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={[
+        "flex flex-col rounded-xl border p-3 text-left min-h-[120px] transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        isSelected
+          ? "bg-primary/5 border-primary/40 shadow-sm"
+          : isToday
+            ? "bg-accent/5 border-accent/25"
+            : "bg-card border-border hover:border-primary/20 hover:shadow-sm",
+      ].join(" ")}
+      data-ocid={`week.day_cell.${day.getDay()}`}
+    >
+      <div className="flex items-center gap-1.5 mb-2">
+        <span
+          className={[
+            "text-xs font-medium uppercase tracking-wide",
+            isToday ? "text-accent" : "text-muted-foreground",
+          ].join(" ")}
+        >
+          {day.toLocaleDateString([], { weekday: "short" })}
+        </span>
+        <span
+          className={[
+            "text-sm font-display font-semibold",
+            isSelected
+              ? "text-primary"
+              : isToday
+                ? "text-accent"
+                : "text-foreground",
+          ].join(" ")}
+        >
+          {day.getDate()}
+        </span>
+        {slots.length > 0 && (
+          <span className="ml-auto text-[10px] text-muted-foreground font-medium">
+            {slots.length}
+          </span>
+        )}
+      </div>
+      <div className="flex flex-col gap-1 flex-1">
+        {slots.slice(0, 3).map((s) => (
+          <div
+            key={s.id}
+            className="text-[10px] leading-tight px-1.5 py-0.5 rounded font-medium truncate border"
+            style={CATEGORY_META[s.category].style}
+          >
+            {formatTime(s.startTime)} {s.title}
+          </div>
+        ))}
+        {slots.length > 3 && (
+          <span className="text-[10px] text-muted-foreground pl-1">
+            +{slots.length - 3} more
+          </span>
+        )}
+      </div>
+    </button>
+  );
+}
+
+// ─── Category filter bar ─────────────────────────────────────────────────────
+
+const ALL_CATEGORIES: (SlotCategory | "all")[] = [
+  "all",
+  "work",
+  "personal",
+  "study",
+];
+
+function CategoryFilter({
+  active,
+  onChange,
+}: {
+  active: SlotCategory | "all";
+  onChange: (c: SlotCategory | "all") => void;
+}) {
+  return (
+    <div
+      className="flex gap-1.5 flex-wrap"
+      data-ocid="schedule.category_filter"
+    >
+      {ALL_CATEGORIES.map((c) => {
+        const isActive = active === c;
+        const meta = c === "all" ? null : CATEGORY_META[c];
+        return (
+          <button
+            key={c}
+            type="button"
+            onClick={() => onChange(c)}
+            className={[
+              "flex items-center gap-1 px-2.5 py-1 rounded-lg border text-xs font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              !isActive
+                ? "border-border text-muted-foreground hover:border-border/70"
+                : "",
+            ]
+              .join(" ")
+              .trim()}
+            style={
+              isActive
+                ? meta
+                  ? meta.style
+                  : {
+                      borderColor: "oklch(var(--primary) / 0.4)",
+                      color: "oklch(var(--primary))",
+                      backgroundColor: "oklch(var(--primary) / 0.1)",
+                    }
+                : undefined
+            }
+            data-ocid={`schedule.filter.${c}`}
+          >
+            {meta?.icon}
+            {c === "all" ? "All" : getCategoryLabel(c)}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// ─── Main page ────────────────────────────────────────────────────────────────
+
 export default function SchedulePage() {
+  const today = startOfDay(new Date());
+  const [viewMode, setViewMode] = useState<"day" | "week">("day");
+  const [currentDate, setCurrentDate] = useState<Date>(today);
+  const [categoryFilter, setCategoryFilter] = useState<SlotCategory | "all">(
+    "all",
+  );
   const [modalOpen, setModalOpen] = useState(false);
   const [editSlot, setEditSlot] = useState<TimeSlot | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<number | null>(null);
@@ -200,6 +456,16 @@ export default function SchedulePage() {
   const updateSlot = useUpdateSlot();
   const deleteSlot = useDeleteSlot();
   const toggleSlot = useToggleSlot();
+
+  const weekStart = getWeekStart(currentDate);
+  const weekDays = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
+
+  const slotsForDay = (day: Date) =>
+    (slots ?? []).filter((s) => isSameDay(new Date(s.startTime), day));
+
+  const filteredSlots = (slots ?? [])
+    .filter((s) => isSameDay(new Date(s.startTime), currentDate))
+    .filter((s) => categoryFilter === "all" || s.category === categoryFilter);
 
   function openAdd() {
     setEditSlot(null);
@@ -221,6 +487,7 @@ export default function SchedulePage() {
     endTime: number;
     title: string;
     description: string;
+    category: SlotCategory;
   }) {
     try {
       if (editSlot) {
@@ -261,47 +528,217 @@ export default function SchedulePage() {
 
   return (
     <Layout onAddSlot={openAdd}>
-      {isLoading ? (
-        <div className="space-y-3" data-ocid="schedule.loading_state">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="rounded-xl border border-border bg-card p-4 space-y-2"
+      {/* View/Nav controls */}
+      <div className="flex flex-col gap-3 mb-5">
+        {/* Row 1: view toggle + today */}
+        <div className="flex items-center justify-between gap-2">
+          <div
+            className="flex rounded-lg border border-border overflow-hidden text-sm"
+            data-ocid="schedule.view_toggle"
+          >
+            <button
+              type="button"
+              onClick={() => setViewMode("day")}
+              className={[
+                "px-3 py-1.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+                viewMode === "day"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
+              ].join(" ")}
+              data-ocid="schedule.day_view_tab"
             >
-              <Skeleton className="h-4 w-32" />
-              <Skeleton className="h-5 w-48" />
-              <Skeleton className="h-3 w-64" />
+              Day
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode("week")}
+              className={[
+                "px-3 py-1.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+                viewMode === "week"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50",
+              ].join(" ")}
+              data-ocid="schedule.week_view_tab"
+            >
+              Week
+            </button>
+          </div>
+
+          {!isSameDay(currentDate, today) && (
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => setCurrentDate(today)}
+              className="text-xs h-8"
+              data-ocid="schedule.today_button"
+            >
+              Today
+            </Button>
+          )}
+        </div>
+
+        {/* Row 2: date navigation */}
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() =>
+              setCurrentDate((d) =>
+                viewMode === "day"
+                  ? addDays(d, -1)
+                  : addDays(getWeekStart(d), -7),
+              )
+            }
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-label="Previous"
+            data-ocid="schedule.pagination_prev"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <p className="flex-1 text-center text-sm font-display font-semibold text-foreground">
+            {viewMode === "day"
+              ? formatDayLabel(currentDate)
+              : formatWeekLabel(weekStart)}
+          </p>
+          <button
+            type="button"
+            onClick={() =>
+              setCurrentDate((d) =>
+                viewMode === "day"
+                  ? addDays(d, 1)
+                  : addDays(getWeekStart(d), 7),
+              )
+            }
+            className="w-8 h-8 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            aria-label="Next"
+            data-ocid="schedule.pagination_next"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Row 3: category filter (day view only) */}
+        {viewMode === "day" && (
+          <CategoryFilter
+            active={categoryFilter}
+            onChange={setCategoryFilter}
+          />
+        )}
+      </div>
+
+      {/* ── Week view ── */}
+      {viewMode === "week" &&
+        (isLoading ? (
+          <div
+            className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2"
+            data-ocid="schedule.week_loading_state"
+          >
+            {["sun", "mon", "tue", "wed", "thu", "fri", "sat"].map((day) => (
+              <div
+                key={`skeleton-${day}`}
+                className="rounded-xl border border-border bg-card p-3 min-h-[120px] space-y-2"
+              >
+                <Skeleton className="h-3 w-16" />
+                <Skeleton className="h-4 w-24" />
+                <Skeleton className="h-3 w-20" />
+              </div>
+            ))}
+          </div>
+        ) : isError ? (
+          <div
+            className="rounded-xl border border-destructive/30 bg-destructive/5 p-6 text-center"
+            data-ocid="schedule.week_error_state"
+          >
+            <p className="text-destructive font-medium">
+              Failed to load schedule.
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Please refresh the page.
+            </p>
+          </div>
+        ) : (
+          <div
+            className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2"
+            data-ocid="schedule.week_grid"
+          >
+            {weekDays.map((day) => (
+              <WeekDayCell
+                key={day.toISOString()}
+                day={day}
+                slots={slotsForDay(day)}
+                isToday={isSameDay(day, today)}
+                isSelected={isSameDay(day, currentDate)}
+                onClick={() => {
+                  setCurrentDate(day);
+                  setViewMode("day");
+                }}
+              />
+            ))}
+          </div>
+        ))}
+
+      {/* ── Day view ── */}
+      {viewMode === "day" &&
+        (isLoading ? (
+          <div className="space-y-3" data-ocid="schedule.loading_state">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="rounded-xl border border-border bg-card p-4 space-y-2"
+              >
+                <Skeleton className="h-4 w-32" />
+                <Skeleton className="h-5 w-48" />
+                <Skeleton className="h-3 w-64" />
+              </div>
+            ))}
+          </div>
+        ) : isError ? (
+          <div
+            className="rounded-xl border border-destructive/30 bg-destructive/5 p-6 text-center"
+            data-ocid="schedule.error_state"
+          >
+            <p className="text-destructive font-medium">
+              Failed to load schedule.
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Please refresh the page.
+            </p>
+          </div>
+        ) : filteredSlots.length === 0 ? (
+          (slots ?? []).filter((s) =>
+            isSameDay(new Date(s.startTime), currentDate),
+          ).length === 0 ? (
+            <EmptyState onAdd={openAdd} />
+          ) : (
+            <div
+              className="flex flex-col items-center justify-center py-14 text-center"
+              data-ocid="schedule.filtered_empty_state"
+            >
+              <p className="text-muted-foreground text-sm">
+                No <strong>{categoryFilter}</strong> tasks today.
+              </p>
+              <button
+                type="button"
+                onClick={() => setCategoryFilter("all")}
+                className="mt-2 text-xs text-primary hover:underline focus-visible:outline-none"
+              >
+                Show all tasks
+              </button>
             </div>
-          ))}
-        </div>
-      ) : isError ? (
-        <div
-          className="rounded-xl border border-destructive/30 bg-destructive/5 p-6 text-center"
-          data-ocid="schedule.error_state"
-        >
-          <p className="text-destructive font-medium">
-            Failed to load schedule.
-          </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            Please refresh the page.
-          </p>
-        </div>
-      ) : !slots || slots.length === 0 ? (
-        <EmptyState onAdd={openAdd} />
-      ) : (
-        <div className="space-y-3" data-ocid="schedule.list">
-          {slots.map((slot, i) => (
-            <SlotCard
-              key={slot.id}
-              slot={slot}
-              index={i + 1}
-              onEdit={openEdit}
-              onDelete={(id) => setDeleteTarget(id)}
-              onToggle={handleToggle}
-            />
-          ))}
-        </div>
-      )}
+          )
+        ) : (
+          <div className="space-y-3" data-ocid="schedule.list">
+            {filteredSlots.map((slot, i) => (
+              <SlotCard
+                key={slot.id}
+                slot={slot}
+                index={i + 1}
+                onEdit={openEdit}
+                onDelete={(id) => setDeleteTarget(id)}
+                onToggle={handleToggle}
+              />
+            ))}
+          </div>
+        ))}
 
       <AddSlotModal
         open={modalOpen}

@@ -1,3 +1,5 @@
+export type SlotCategory = "work" | "personal" | "study";
+
 export interface TimeSlot {
   id: number;
   startTime: number;
@@ -5,6 +7,7 @@ export interface TimeSlot {
   title: string;
   description: string;
   completed: boolean;
+  category: SlotCategory;
 }
 
 export type SlotStatus = "past" | "current" | "future";
@@ -14,10 +17,33 @@ export interface CreateSlotInput {
   endTime: number;
   title: string;
   description: string;
+  category: SlotCategory;
 }
 
 export interface UpdateSlotInput extends CreateSlotInput {
   id: number;
+}
+
+export function getCategoryLabel(category: SlotCategory): string {
+  switch (category) {
+    case "work":
+      return "Work";
+    case "personal":
+      return "Personal";
+    case "study":
+      return "Study";
+  }
+}
+
+export function getCategoryColor(category: SlotCategory): string {
+  switch (category) {
+    case "work":
+      return "category-work";
+    case "personal":
+      return "category-personal";
+    case "study":
+      return "category-study";
+  }
 }
 
 export function getSlotStatus(startTime: number, endTime: number): SlotStatus {

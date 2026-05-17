@@ -9,8 +9,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { BookOpen, Briefcase, User } from "lucide-react";
 import { useEffect, useState } from "react";
-import { type TimeSlot, msToTimeInput, timeInputToMs } from "../types";
+import {
+  type SlotCategory,
+  type TimeSlot,
+  msToTimeInput,
+  timeInputToMs,
+} from "../types";
 
 interface AddSlotModalProps {
   open: boolean;
@@ -20,6 +26,7 @@ interface AddSlotModalProps {
     endTime: number;
     title: string;
     description: string;
+    category: SlotCategory;
   }) => void;
   editSlot?: TimeSlot | null;
   isLoading?: boolean;
@@ -30,6 +37,7 @@ interface FormState {
   description: string;
   startTime: string;
   endTime: string;
+  category: SlotCategory;
 }
 
 interface FormErrors {
@@ -44,7 +52,46 @@ const DEFAULT_FORM: FormState = {
   description: "",
   startTime: "",
   endTime: "",
+  category: "personal",
 };
+
+const CATEGORIES: {
+  value: SlotCategory;
+  label: string;
+  icon: React.ReactNode;
+  activeStyle: React.CSSProperties;
+}[] = [
+  {
+    value: "work",
+    label: "Work",
+    icon: <Briefcase className="w-3.5 h-3.5" />,
+    activeStyle: {
+      borderColor: "var(--category-work)",
+      color: "var(--category-work)",
+      backgroundColor: "var(--category-work-bg)",
+    },
+  },
+  {
+    value: "personal",
+    label: "Personal",
+    icon: <User className="w-3.5 h-3.5" />,
+    activeStyle: {
+      borderColor: "var(--category-personal)",
+      color: "var(--category-personal)",
+      backgroundColor: "var(--category-personal-bg)",
+    },
+  },
+  {
+    value: "study",
+    label: "Study",
+    icon: <BookOpen className="w-3.5 h-3.5" />,
+    activeStyle: {
+      borderColor: "var(--category-study)",
+      color: "var(--category-study)",
+      backgroundColor: "var(--category-study-bg)",
+    },
+  },
+];
 
 export function AddSlotModal({
   open,
@@ -67,6 +114,7 @@ export function AddSlotModal({
           description: editSlot.description,
           startTime: msToTimeInput(editSlot.startTime),
           endTime: msToTimeInput(editSlot.endTime),
+          category: editSlot.category,
         });
       } else {
         setForm(DEFAULT_FORM);
@@ -108,6 +156,7 @@ export function AddSlotModal({
       startTime: true,
       endTime: true,
       description: true,
+      category: true,
     };
     setTouched(allTouched);
     const errs = validate(form);
@@ -119,6 +168,7 @@ export function AddSlotModal({
       description: form.description.trim(),
       startTime: timeInputToMs(form.startTime, today),
       endTime: timeInputToMs(form.endTime, today),
+      category: form.category,
     });
   }
 
@@ -154,6 +204,28 @@ export function AddSlotModal({
                 {errors.title}
               </p>
             )}
+          </div>
+
+          {/* Category */}
+          <div className="space-y-1.5">
+            <Label>Category</Label>
+            <div className="flex gap-2" data-ocid="slot.category_select">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat.value}
+                  type="button"
+                  onClick={() => handleChange("category", cat.value)}
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg border text-xs font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  style={
+                    form.category === cat.value ? cat.activeStyle : undefined
+                  }
+                  data-ocid={`slot.category_${cat.value}`}
+                >
+                  {cat.icon}
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Time Row */}

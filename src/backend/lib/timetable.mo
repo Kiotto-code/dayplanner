@@ -18,6 +18,7 @@ module {
       title = slot.title;
       description = slot.description;
       completed = slot.completed;
+      category = slot.category;
     };
   };
 
@@ -35,6 +36,7 @@ module {
       var title = args.title;
       var description = args.description;
       var completed = false;
+      var category = args.category;
     };
     slots.add(slot);
     toView(slot);
@@ -57,6 +59,7 @@ module {
         slot.endTime := args.endTime;
         slot.title := args.title;
         slot.description := args.description;
+        slot.category := args.category;
         ?toView(slot);
       };
     };

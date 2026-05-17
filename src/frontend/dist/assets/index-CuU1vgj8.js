@@ -32824,7 +32824,35 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$7 = [
+const __iconNode$c = [
+  ["path", { d: "M12 7v14", key: "1akyts" }],
+  [
+    "path",
+    {
+      d: "M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z",
+      key: "ruj8y"
+    }
+  ]
+];
+const BookOpen = createLucideIcon("book-open", __iconNode$c);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$b = [
+  ["path", { d: "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16", key: "jecpp" }],
+  ["rect", { width: "20", height: "14", x: "2", y: "6", rx: "2", key: "i6l2r4" }]
+];
+const Briefcase = createLucideIcon("briefcase", __iconNode$b);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$a = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
@@ -32836,26 +32864,53 @@ const __iconNode$7 = [
   ["path", { d: "M12 18h.01", key: "mhygvu" }],
   ["path", { d: "M16 18h.01", key: "kzsmim" }]
 ];
-const CalendarDays = createLucideIcon("calendar-days", __iconNode$7);
+const CalendarDays = createLucideIcon("calendar-days", __iconNode$a);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$6 = [
+const __iconNode$9 = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
+const ChevronLeft = createLucideIcon("chevron-left", __iconNode$9);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$8 = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = createLucideIcon("chevron-right", __iconNode$8);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$7 = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
 ];
-const CircleCheck = createLucideIcon("circle-check", __iconNode$6);
+const CircleCheck = createLucideIcon("circle-check", __iconNode$7);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$5 = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
-const Circle = createLucideIcon("circle", __iconNode$5);
+const __iconNode$6 = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
+const Circle = createLucideIcon("circle", __iconNode$6);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$5 = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
+];
+const Clock = createLucideIcon("clock", __iconNode$5);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -32863,17 +32918,6 @@ const Circle = createLucideIcon("circle", __iconNode$5);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$4 = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["polyline", { points: "12 6 12 12 16 14", key: "68esgv" }]
-];
-const Clock = createLucideIcon("clock", __iconNode$4);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$3 = [
   [
     "path",
     {
@@ -32882,7 +32926,18 @@ const __iconNode$3 = [
     }
   ]
 ];
-const Pen = createLucideIcon("pen", __iconNode$3);
+const Pen = createLucideIcon("pen", __iconNode$4);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$3 = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "M12 5v14", key: "s699le" }]
+];
+const Plus = createLucideIcon("plus", __iconNode$3);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -32890,10 +32945,13 @@ const Pen = createLucideIcon("pen", __iconNode$3);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$2 = [
-  ["path", { d: "M5 12h14", key: "1ays0h" }],
-  ["path", { d: "M12 5v14", key: "s699le" }]
+  ["path", { d: "M3 6h18", key: "d0wm0j" }],
+  ["path", { d: "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6", key: "4alrt4" }],
+  ["path", { d: "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2", key: "v07s0e" }],
+  ["line", { x1: "10", x2: "10", y1: "11", y2: "17", key: "1uufr5" }],
+  ["line", { x1: "14", x2: "14", y1: "11", y2: "17", key: "xtxkd" }]
 ];
-const Plus = createLucideIcon("plus", __iconNode$2);
+const Trash2 = createLucideIcon("trash-2", __iconNode$2);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -32901,13 +32959,10 @@ const Plus = createLucideIcon("plus", __iconNode$2);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$1 = [
-  ["path", { d: "M3 6h18", key: "d0wm0j" }],
-  ["path", { d: "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6", key: "4alrt4" }],
-  ["path", { d: "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2", key: "v07s0e" }],
-  ["line", { x1: "10", x2: "10", y1: "11", y2: "17", key: "1uufr5" }],
-  ["line", { x1: "14", x2: "14", y1: "11", y2: "17", key: "xtxkd" }]
+  ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
+  ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
 ];
-const Trash2 = createLucideIcon("trash-2", __iconNode$1);
+const User = createLucideIcon("user", __iconNode$1);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -33112,6 +33167,16 @@ function Textarea({ className, ...props }) {
     }
   );
 }
+function getCategoryLabel(category) {
+  switch (category) {
+    case "work":
+      return "Work";
+    case "personal":
+      return "Personal";
+    case "study":
+      return "Study";
+  }
+}
 function getSlotStatus(startTime, endTime) {
   const now2 = Date.now();
   if (now2 > endTime) return "past";
@@ -33147,8 +33212,41 @@ const DEFAULT_FORM = {
   title: "",
   description: "",
   startTime: "",
-  endTime: ""
+  endTime: "",
+  category: "personal"
 };
+const CATEGORIES = [
+  {
+    value: "work",
+    label: "Work",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Briefcase, { className: "w-3.5 h-3.5" }),
+    activeStyle: {
+      borderColor: "var(--category-work)",
+      color: "var(--category-work)",
+      backgroundColor: "var(--category-work-bg)"
+    }
+  },
+  {
+    value: "personal",
+    label: "Personal",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(User, { className: "w-3.5 h-3.5" }),
+    activeStyle: {
+      borderColor: "var(--category-personal)",
+      color: "var(--category-personal)",
+      backgroundColor: "var(--category-personal-bg)"
+    }
+  },
+  {
+    value: "study",
+    label: "Study",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(BookOpen, { className: "w-3.5 h-3.5" }),
+    activeStyle: {
+      borderColor: "var(--category-study)",
+      color: "var(--category-study)",
+      backgroundColor: "var(--category-study-bg)"
+    }
+  }
+];
 function AddSlotModal({
   open,
   onClose,
@@ -33166,7 +33264,8 @@ function AddSlotModal({
           title: editSlot.title,
           description: editSlot.description,
           startTime: msToTimeInput(editSlot.startTime),
-          endTime: msToTimeInput(editSlot.endTime)
+          endTime: msToTimeInput(editSlot.endTime),
+          category: editSlot.category
         });
       } else {
         setForm(DEFAULT_FORM);
@@ -33203,7 +33302,8 @@ function AddSlotModal({
       title: true,
       startTime: true,
       endTime: true,
-      description: true
+      description: true,
+      category: true
     };
     setTouched(allTouched);
     const errs = validate(form);
@@ -33214,7 +33314,8 @@ function AddSlotModal({
       title: form.title.trim(),
       description: form.description.trim(),
       startTime: timeInputToMs(form.startTime, today),
-      endTime: timeInputToMs(form.endTime, today)
+      endTime: timeInputToMs(form.endTime, today),
+      category: form.category
     });
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: (v2) => !v2 && onClose(), children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "sm:max-w-md", "data-ocid": "slot.dialog", children: [
@@ -33245,6 +33346,24 @@ function AddSlotModal({
             children: errors.title
           }
         )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Category" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-2", "data-ocid": "slot.category_select", children: CATEGORIES.map((cat) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            type: "button",
+            onClick: () => handleChange("category", cat.value),
+            className: "flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg border text-xs font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+            style: form.category === cat.value ? cat.activeStyle : void 0,
+            "data-ocid": `slot.category_${cat.value}`,
+            children: [
+              cat.icon,
+              cat.label
+            ]
+          },
+          cat.value
+        )) })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-2 gap-3", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
@@ -33442,11 +33561,17 @@ function Layout({ children, onAddSlot }) {
     ] }) })
   ] });
 }
+const SlotCategory = Variant({
+  "work": Null,
+  "personal": Null,
+  "study": Null
+});
 const CreateSlotArgs = Record({
   "startTime": Int,
   "title": Text,
   "endTime": Int,
-  "description": Text
+  "description": Text,
+  "category": SlotCategory
 });
 const SlotId = Nat;
 const TimeSlotView = Record({
@@ -33455,14 +33580,16 @@ const TimeSlotView = Record({
   "title": Text,
   "endTime": Int,
   "completed": Bool,
-  "description": Text
+  "description": Text,
+  "category": SlotCategory
 });
 const UpdateSlotArgs = Record({
   "id": SlotId,
   "startTime": Int,
   "title": Text,
   "endTime": Int,
-  "description": Text
+  "description": Text,
+  "category": SlotCategory
 });
 Service({
   "createSlot": Func([CreateSlotArgs], [TimeSlotView], []),
@@ -33472,11 +33599,17 @@ Service({
   "updateSlot": Func([UpdateSlotArgs], [Opt(TimeSlotView)], [])
 });
 const idlFactory = ({ IDL: IDL2 }) => {
+  const SlotCategory2 = IDL2.Variant({
+    "work": IDL2.Null,
+    "personal": IDL2.Null,
+    "study": IDL2.Null
+  });
   const CreateSlotArgs2 = IDL2.Record({
     "startTime": IDL2.Int,
     "title": IDL2.Text,
     "endTime": IDL2.Int,
-    "description": IDL2.Text
+    "description": IDL2.Text,
+    "category": SlotCategory2
   });
   const SlotId2 = IDL2.Nat;
   const TimeSlotView2 = IDL2.Record({
@@ -33485,14 +33618,16 @@ const idlFactory = ({ IDL: IDL2 }) => {
     "title": IDL2.Text,
     "endTime": IDL2.Int,
     "completed": IDL2.Bool,
-    "description": IDL2.Text
+    "description": IDL2.Text,
+    "category": SlotCategory2
   });
   const UpdateSlotArgs2 = IDL2.Record({
     "id": SlotId2,
     "startTime": IDL2.Int,
     "title": IDL2.Text,
     "endTime": IDL2.Int,
-    "description": IDL2.Text
+    "description": IDL2.Text,
+    "category": SlotCategory2
   });
   return IDL2.Service({
     "createSlot": IDL2.Func([CreateSlotArgs2], [TimeSlotView2], []),
@@ -33512,15 +33647,15 @@ class Backend {
   async createSlot(arg0) {
     if (this.processError) {
       try {
-        const result = await this.actor.createSlot(arg0);
-        return result;
+        const result = await this.actor.createSlot(to_candid_CreateSlotArgs_n1(this._uploadFile, this._downloadFile, arg0));
+        return from_candid_TimeSlotView_n5(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
-      const result = await this.actor.createSlot(arg0);
-      return result;
+      const result = await this.actor.createSlot(to_candid_CreateSlotArgs_n1(this._uploadFile, this._downloadFile, arg0));
+      return from_candid_TimeSlotView_n5(this._uploadFile, this._downloadFile, result);
     }
   }
   async deleteSlot(arg0) {
@@ -33541,47 +33676,107 @@ class Backend {
     if (this.processError) {
       try {
         const result = await this.actor.listSlots();
-        return result;
+        return from_candid_vec_n9(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.listSlots();
-      return result;
+      return from_candid_vec_n9(this._uploadFile, this._downloadFile, result);
     }
   }
   async toggleSlotComplete(arg0) {
     if (this.processError) {
       try {
         const result = await this.actor.toggleSlotComplete(arg0);
-        return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+        return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
       const result = await this.actor.toggleSlotComplete(arg0);
-      return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+      return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
     }
   }
   async updateSlot(arg0) {
     if (this.processError) {
       try {
-        const result = await this.actor.updateSlot(arg0);
-        return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+        const result = await this.actor.updateSlot(to_candid_UpdateSlotArgs_n11(this._uploadFile, this._downloadFile, arg0));
+        return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
       } catch (e) {
         this.processError(e);
         throw new Error("unreachable");
       }
     } else {
-      const result = await this.actor.updateSlot(arg0);
-      return from_candid_opt_n1(this._uploadFile, this._downloadFile, result);
+      const result = await this.actor.updateSlot(to_candid_UpdateSlotArgs_n11(this._uploadFile, this._downloadFile, arg0));
+      return from_candid_opt_n10(this._uploadFile, this._downloadFile, result);
     }
   }
 }
-function from_candid_opt_n1(_uploadFile, _downloadFile, value) {
-  return value.length === 0 ? null : value[0];
+function from_candid_SlotCategory_n7(_uploadFile, _downloadFile, value) {
+  return from_candid_variant_n8(_uploadFile, _downloadFile, value);
+}
+function from_candid_TimeSlotView_n5(_uploadFile, _downloadFile, value) {
+  return from_candid_record_n6(_uploadFile, _downloadFile, value);
+}
+function from_candid_opt_n10(_uploadFile, _downloadFile, value) {
+  return value.length === 0 ? null : from_candid_TimeSlotView_n5(_uploadFile, _downloadFile, value[0]);
+}
+function from_candid_record_n6(_uploadFile, _downloadFile, value) {
+  return {
+    id: value.id,
+    startTime: value.startTime,
+    title: value.title,
+    endTime: value.endTime,
+    completed: value.completed,
+    description: value.description,
+    category: from_candid_SlotCategory_n7(_uploadFile, _downloadFile, value.category)
+  };
+}
+function from_candid_variant_n8(_uploadFile, _downloadFile, value) {
+  return "work" in value ? "work" : "personal" in value ? "personal" : "study" in value ? "study" : value;
+}
+function from_candid_vec_n9(_uploadFile, _downloadFile, value) {
+  return value.map((x3) => from_candid_TimeSlotView_n5(_uploadFile, _downloadFile, x3));
+}
+function to_candid_CreateSlotArgs_n1(_uploadFile, _downloadFile, value) {
+  return to_candid_record_n2(_uploadFile, _downloadFile, value);
+}
+function to_candid_SlotCategory_n3(_uploadFile, _downloadFile, value) {
+  return to_candid_variant_n4(_uploadFile, _downloadFile, value);
+}
+function to_candid_UpdateSlotArgs_n11(_uploadFile, _downloadFile, value) {
+  return to_candid_record_n12(_uploadFile, _downloadFile, value);
+}
+function to_candid_record_n12(_uploadFile, _downloadFile, value) {
+  return {
+    id: value.id,
+    startTime: value.startTime,
+    title: value.title,
+    endTime: value.endTime,
+    description: value.description,
+    category: to_candid_SlotCategory_n3(_uploadFile, _downloadFile, value.category)
+  };
+}
+function to_candid_record_n2(_uploadFile, _downloadFile, value) {
+  return {
+    startTime: value.startTime,
+    title: value.title,
+    endTime: value.endTime,
+    description: value.description,
+    category: to_candid_SlotCategory_n3(_uploadFile, _downloadFile, value.category)
+  };
+}
+function to_candid_variant_n4(_uploadFile, _downloadFile, value) {
+  return value == "work" ? {
+    work: null
+  } : value == "personal" ? {
+    personal: null
+  } : value == "study" ? {
+    study: null
+  } : value;
 }
 function createActor(canisterId, _uploadFile, _downloadFile, options = {}) {
   const agent = options.agent || HttpAgent.createSync({
@@ -33599,13 +33794,19 @@ function createActor(canisterId, _uploadFile, _downloadFile, options = {}) {
 }
 const QUERY_KEY = ["slots"];
 function toTimeSlot(raw) {
+  const categoryMap = {
+    work: "work",
+    personal: "personal",
+    study: "study"
+  };
   return {
     id: Number(raw.id),
     startTime: Number(raw.startTime),
     endTime: Number(raw.endTime),
     title: raw.title,
     description: raw.description,
-    completed: raw.completed
+    completed: raw.completed,
+    category: categoryMap[raw.category] ?? "personal"
   };
 }
 function useSlots() {
@@ -33630,7 +33831,8 @@ function useCreateSlot() {
         startTime: BigInt(input.startTime),
         endTime: BigInt(input.endTime),
         title: input.title,
-        description: input.description
+        description: input.description,
+        category: input.category
       });
       return toTimeSlot(result);
     },
@@ -33648,9 +33850,10 @@ function useUpdateSlot() {
         startTime: BigInt(input.startTime),
         endTime: BigInt(input.endTime),
         title: input.title,
-        description: input.description
+        description: input.description,
+        category: input.category
       });
-      if (result.__kind__ === "Some") return toTimeSlot(result.value);
+      if (result) return toTimeSlot(result);
       return null;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: QUERY_KEY })
@@ -33674,10 +33877,92 @@ function useToggleSlot() {
     mutationFn: async (id) => {
       if (!actor) throw new Error("Not connected");
       const result = await actor.toggleSlotComplete(BigInt(id));
-      if (result.__kind__ === "Some") return toTimeSlot(result.value);
+      if (result) return toTimeSlot(result);
       return null;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: QUERY_KEY })
+  });
+}
+const CATEGORY_META = {
+  work: {
+    label: "Work",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Briefcase, { className: "w-3 h-3" }),
+    style: {
+      borderColor: "var(--category-work)",
+      color: "var(--category-work)",
+      backgroundColor: "var(--category-work-bg)"
+    }
+  },
+  personal: {
+    label: "Personal",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(User, { className: "w-3 h-3" }),
+    style: {
+      borderColor: "var(--category-personal)",
+      color: "var(--category-personal)",
+      backgroundColor: "var(--category-personal-bg)"
+    }
+  },
+  study: {
+    label: "Study",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(BookOpen, { className: "w-3 h-3" }),
+    style: {
+      borderColor: "var(--category-study)",
+      color: "var(--category-study)",
+      backgroundColor: "var(--category-study-bg)"
+    }
+  }
+};
+function CategoryBadge({ category }) {
+  const meta = CATEGORY_META[category];
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "span",
+    {
+      className: "inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md border text-[10px] font-medium leading-none",
+      style: meta.style,
+      children: [
+        meta.icon,
+        meta.label
+      ]
+    }
+  );
+}
+function startOfDay(d2) {
+  const r2 = new Date(d2);
+  r2.setHours(0, 0, 0, 0);
+  return r2;
+}
+function addDays(d2, n) {
+  const r2 = new Date(d2);
+  r2.setDate(r2.getDate() + n);
+  return r2;
+}
+function isSameDay(a2, b2) {
+  return a2.getFullYear() === b2.getFullYear() && a2.getMonth() === b2.getMonth() && a2.getDate() === b2.getDate();
+}
+function getWeekStart(d2) {
+  const r2 = new Date(d2);
+  r2.setHours(0, 0, 0, 0);
+  const day = r2.getDay();
+  r2.setDate(r2.getDate() - day + 1);
+  if (day === 0) r2.setDate(r2.getDate() - 6);
+  return r2;
+}
+function formatShortDate(d2) {
+  return d2.toLocaleDateString([], { month: "short", day: "numeric" });
+}
+function formatWeekLabel(weekStart) {
+  const end = addDays(weekStart, 6);
+  return `${formatShortDate(weekStart)} – ${formatShortDate(end)}`;
+}
+function formatDayLabel(d2) {
+  const today = startOfDay(/* @__PURE__ */ new Date());
+  if (isSameDay(d2, today)) return "Today";
+  if (isSameDay(d2, addDays(today, 1))) return "Tomorrow";
+  if (isSameDay(d2, addDays(today, -1))) return "Yesterday";
+  return d2.toLocaleDateString([], {
+    weekday: "long",
+    month: "long",
+    day: "numeric"
   });
 }
 function SlotCard({
@@ -33691,7 +33976,7 @@ function SlotCard({
   const isCompleted = slot.completed;
   const containerClass = [
     "relative rounded-xl border transition-smooth group overflow-hidden",
-    status === "current" && !isCompleted ? "bg-primary/5 border-primary/30 shadow-md slot-current" : status === "past" && !isCompleted ? "bg-muted/30 border-border/60 opacity-65" : isCompleted ? "bg-accent/5 border-accent/25" : "bg-card border-border hover:border-primary/20 hover:shadow-sm"
+    status === "current" && !isCompleted ? "bg-primary/5 border-primary/30 shadow-md" : status === "past" && !isCompleted ? "bg-muted/30 border-border/60 opacity-65" : isCompleted ? "bg-accent/5 border-accent/25" : "bg-card border-border hover:border-primary/20 hover:shadow-sm"
   ].join(" ");
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: containerClass, "data-ocid": `schedule.item.${index2}`, children: [
     status === "current" && !isCompleted && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-xl" }),
@@ -33713,6 +33998,7 @@ function SlotCard({
           )
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 shrink-0", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CategoryBadge, { category: slot.category }),
           status === "current" && !isCompleted && /* @__PURE__ */ jsxRuntimeExports.jsx(
             Badge,
             {
@@ -33811,7 +34097,122 @@ function EmptyState({ onAdd }) {
     }
   );
 }
+function WeekDayCell({
+  day,
+  slots,
+  isToday,
+  isSelected,
+  onClick
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "button",
+    {
+      type: "button",
+      onClick,
+      className: [
+        "flex flex-col rounded-xl border p-3 text-left min-h-[120px] transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        isSelected ? "bg-primary/5 border-primary/40 shadow-sm" : isToday ? "bg-accent/5 border-accent/25" : "bg-card border-border hover:border-primary/20 hover:shadow-sm"
+      ].join(" "),
+      "data-ocid": `week.day_cell.${day.getDay()}`,
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "span",
+            {
+              className: [
+                "text-xs font-medium uppercase tracking-wide",
+                isToday ? "text-accent" : "text-muted-foreground"
+              ].join(" "),
+              children: day.toLocaleDateString([], { weekday: "short" })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "span",
+            {
+              className: [
+                "text-sm font-display font-semibold",
+                isSelected ? "text-primary" : isToday ? "text-accent" : "text-foreground"
+              ].join(" "),
+              children: day.getDate()
+            }
+          ),
+          slots.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-auto text-[10px] text-muted-foreground font-medium", children: slots.length })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-1 flex-1", children: [
+          slots.slice(0, 3).map((s2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "text-[10px] leading-tight px-1.5 py-0.5 rounded font-medium truncate border",
+              style: CATEGORY_META[s2.category].style,
+              children: [
+                formatTime(s2.startTime),
+                " ",
+                s2.title
+              ]
+            },
+            s2.id
+          )),
+          slots.length > 3 && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-[10px] text-muted-foreground pl-1", children: [
+            "+",
+            slots.length - 3,
+            " more"
+          ] })
+        ] })
+      ]
+    }
+  );
+}
+const ALL_CATEGORIES = [
+  "all",
+  "work",
+  "personal",
+  "study"
+];
+function CategoryFilter({
+  active,
+  onChange
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      className: "flex gap-1.5 flex-wrap",
+      "data-ocid": "schedule.category_filter",
+      children: ALL_CATEGORIES.map((c2) => {
+        const isActive = active === c2;
+        const meta = c2 === "all" ? null : CATEGORY_META[c2];
+        return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            type: "button",
+            onClick: () => onChange(c2),
+            className: [
+              "flex items-center gap-1 px-2.5 py-1 rounded-lg border text-xs font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              !isActive ? "border-border text-muted-foreground hover:border-border/70" : ""
+            ].join(" ").trim(),
+            style: isActive ? meta ? meta.style : {
+              borderColor: "oklch(var(--primary) / 0.4)",
+              color: "oklch(var(--primary))",
+              backgroundColor: "oklch(var(--primary) / 0.1)"
+            } : void 0,
+            "data-ocid": `schedule.filter.${c2}`,
+            children: [
+              meta == null ? void 0 : meta.icon,
+              c2 === "all" ? "All" : getCategoryLabel(c2)
+            ]
+          },
+          c2
+        );
+      })
+    }
+  );
+}
 function SchedulePage() {
+  const today = startOfDay(/* @__PURE__ */ new Date());
+  const [viewMode, setViewMode] = reactExports.useState("day");
+  const [currentDate, setCurrentDate] = reactExports.useState(today);
+  const [categoryFilter, setCategoryFilter] = reactExports.useState(
+    "all"
+  );
   const [modalOpen, setModalOpen] = reactExports.useState(false);
   const [editSlot, setEditSlot] = reactExports.useState(null);
   const [deleteTarget, setDeleteTarget] = reactExports.useState(null);
@@ -33820,6 +34221,10 @@ function SchedulePage() {
   const updateSlot = useUpdateSlot();
   const deleteSlot = useDeleteSlot();
   const toggleSlot = useToggleSlot();
+  const weekStart = getWeekStart(currentDate);
+  const weekDays = Array.from({ length: 7 }, (_2, i) => addDays(weekStart, i));
+  const slotsForDay = (day) => (slots ?? []).filter((s2) => isSameDay(new Date(s2.startTime), day));
+  const filteredSlots = (slots ?? []).filter((s2) => isSameDay(new Date(s2.startTime), currentDate)).filter((s2) => categoryFilter === "all" || s2.category === categoryFilter);
   function openAdd() {
     setEditSlot(null);
     setModalOpen(true);
@@ -33867,7 +34272,142 @@ function SchedulePage() {
   }
   const isMutating = createSlot2.isPending || updateSlot.isPending;
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(Layout, { onAddSlot: openAdd, children: [
-    isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", "data-ocid": "schedule.loading_state", children: [1, 2, 3].map((i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-3 mb-5", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "div",
+          {
+            className: "flex rounded-lg border border-border overflow-hidden text-sm",
+            "data-ocid": "schedule.view_toggle",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setViewMode("day"),
+                  className: [
+                    "px-3 py-1.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+                    viewMode === "day" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  ].join(" "),
+                  "data-ocid": "schedule.day_view_tab",
+                  children: "Day"
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => setViewMode("week"),
+                  className: [
+                    "px-3 py-1.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+                    viewMode === "week" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  ].join(" "),
+                  "data-ocid": "schedule.week_view_tab",
+                  children: "Week"
+                }
+              )
+            ]
+          }
+        ),
+        !isSameDay(currentDate, today) && /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button,
+          {
+            size: "sm",
+            variant: "outline",
+            onClick: () => setCurrentDate(today),
+            className: "text-xs h-8",
+            "data-ocid": "schedule.today_button",
+            children: "Today"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            type: "button",
+            onClick: () => setCurrentDate(
+              (d2) => viewMode === "day" ? addDays(d2, -1) : addDays(getWeekStart(d2), -7)
+            ),
+            className: "w-8 h-8 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+            "aria-label": "Previous",
+            "data-ocid": "schedule.pagination_prev",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { className: "w-4 h-4" })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "flex-1 text-center text-sm font-display font-semibold text-foreground", children: viewMode === "day" ? formatDayLabel(currentDate) : formatWeekLabel(weekStart) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            type: "button",
+            onClick: () => setCurrentDate(
+              (d2) => viewMode === "day" ? addDays(d2, 1) : addDays(getWeekStart(d2), 7)
+            ),
+            className: "w-8 h-8 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+            "aria-label": "Next",
+            "data-ocid": "schedule.pagination_next",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "w-4 h-4" })
+          }
+        )
+      ] }),
+      viewMode === "day" && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        CategoryFilter,
+        {
+          active: categoryFilter,
+          onChange: setCategoryFilter
+        }
+      )
+    ] }),
+    viewMode === "week" && (isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        className: "grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2",
+        "data-ocid": "schedule.week_loading_state",
+        children: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"].map((day) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "div",
+          {
+            className: "rounded-xl border border-border bg-card p-3 min-h-[120px] space-y-2",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-3 w-16" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-4 w-24" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-3 w-20" })
+            ]
+          },
+          `skeleton-${day}`
+        ))
+      }
+    ) : isError ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        className: "rounded-xl border border-destructive/30 bg-destructive/5 p-6 text-center",
+        "data-ocid": "schedule.week_error_state",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-destructive font-medium", children: "Failed to load schedule." }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-1", children: "Please refresh the page." })
+        ]
+      }
+    ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        className: "grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2",
+        "data-ocid": "schedule.week_grid",
+        children: weekDays.map((day) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+          WeekDayCell,
+          {
+            day,
+            slots: slotsForDay(day),
+            isToday: isSameDay(day, today),
+            isSelected: isSameDay(day, currentDate),
+            onClick: () => {
+              setCurrentDate(day);
+              setViewMode("day");
+            }
+          },
+          day.toISOString()
+        ))
+      }
+    )),
+    viewMode === "day" && (isLoading ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", "data-ocid": "schedule.loading_state", children: [1, 2, 3].map((i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "div",
       {
         className: "rounded-xl border border-border bg-card p-4 space-y-2",
@@ -33888,7 +34428,31 @@ function SchedulePage() {
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mt-1", children: "Please refresh the page." })
         ]
       }
-    ) : !slots || slots.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(EmptyState, { onAdd: openAdd }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", "data-ocid": "schedule.list", children: slots.map((slot, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+    ) : filteredSlots.length === 0 ? (slots ?? []).filter(
+      (s2) => isSameDay(new Date(s2.startTime), currentDate)
+    ).length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(EmptyState, { onAdd: openAdd }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        className: "flex flex-col items-center justify-center py-14 text-center",
+        "data-ocid": "schedule.filtered_empty_state",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-muted-foreground text-sm", children: [
+            "No ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("strong", { children: categoryFilter }),
+            " tasks today."
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              type: "button",
+              onClick: () => setCategoryFilter("all"),
+              className: "mt-2 text-xs text-primary hover:underline focus-visible:outline-none",
+              children: "Show all tasks"
+            }
+          )
+        ]
+      }
+    ) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "space-y-3", "data-ocid": "schedule.list", children: filteredSlots.map((slot, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
       SlotCard,
       {
         slot,
@@ -33898,7 +34462,7 @@ function SchedulePage() {
         onToggle: handleToggle
       },
       slot.id
-    )) }),
+    )) })),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       AddSlotModal,
       {

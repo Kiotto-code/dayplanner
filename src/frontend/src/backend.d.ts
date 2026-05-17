@@ -7,12 +7,20 @@ export interface None {
     __kind__: "None";
 }
 export type Option<T> = Some<T> | None;
+export interface CreateSlotArgs {
+    startTime: bigint;
+    title: string;
+    endTime: bigint;
+    description: string;
+    category: SlotCategory;
+}
 export interface UpdateSlotArgs {
     id: SlotId;
     startTime: bigint;
     title: string;
     endTime: bigint;
     description: string;
+    category: SlotCategory;
 }
 export interface TimeSlotView {
     id: SlotId;
@@ -21,13 +29,13 @@ export interface TimeSlotView {
     endTime: bigint;
     completed: boolean;
     description: string;
+    category: SlotCategory;
 }
 export type SlotId = bigint;
-export interface CreateSlotArgs {
-    startTime: bigint;
-    title: string;
-    endTime: bigint;
-    description: string;
+export enum SlotCategory {
+    work = "work",
+    personal = "personal",
+    study = "study"
 }
 export interface backendInterface {
     createSlot(args: CreateSlotArgs): Promise<TimeSlotView>;

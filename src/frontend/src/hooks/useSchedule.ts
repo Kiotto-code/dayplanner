@@ -1,7 +1,12 @@
 import { createActor } from "@/backend";
 import { useActor } from "@caffeineai/core-infrastructure";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { CreateSlotInput, TimeSlot, UpdateSlotInput } from "../types";
+import type {
+  CreateSlotInput,
+  SlotCategory,
+  TimeSlot,
+  UpdateSlotInput,
+} from "../types";
 
 const QUERY_KEY = ["slots"];
 
@@ -12,7 +17,13 @@ function toTimeSlot(raw: {
   title: string;
   description: string;
   completed: boolean;
+  category: string;
 }): TimeSlot {
+  const categoryMap: Record<string, SlotCategory> = {
+    work: "work",
+    personal: "personal",
+    study: "study",
+  };
   return {
     id: Number(raw.id),
     startTime: Number(raw.startTime),
@@ -20,6 +31,7 @@ function toTimeSlot(raw: {
     title: raw.title,
     description: raw.description,
     completed: raw.completed,
+    category: categoryMap[raw.category] ?? "personal",
   };
 }
 
@@ -39,6 +51,7 @@ export function useSlots() {
               title: string;
               description: string;
               completed: boolean;
+              category: string;
             }[]
           >;
         }
@@ -62,6 +75,7 @@ export function useCreateSlot() {
             endTime: bigint;
             title: string;
             description: string;
+            category: string;
           }) => Promise<{
             id: bigint;
             startTime: bigint;
@@ -69,6 +83,7 @@ export function useCreateSlot() {
             title: string;
             description: string;
             completed: boolean;
+            category: string;
           }>;
         }
       ).createSlot({
@@ -76,6 +91,7 @@ export function useCreateSlot() {
         endTime: BigInt(input.endTime),
         title: input.title,
         description: input.description,
+        category: input.category,
       });
       return toTimeSlot(result);
     },
@@ -97,20 +113,16 @@ export function useUpdateSlot() {
             endTime: bigint;
             title: string;
             description: string;
-          }) => Promise<
-            | {
-                __kind__: "Some";
-                value: {
-                  id: bigint;
-                  startTime: bigint;
-                  endTime: bigint;
-                  title: string;
-                  description: string;
-                  completed: boolean;
-                };
-              }
-            | { __kind__: "None" }
-          >;
+            category: string;
+          }) => Promise<{
+            id: bigint;
+            startTime: bigint;
+            endTime: bigint;
+            title: string;
+            description: string;
+            completed: boolean;
+            category: string;
+          } | null>;
         }
       ).updateSlot({
         id: BigInt(input.id),
@@ -118,8 +130,9 @@ export function useUpdateSlot() {
         endTime: BigInt(input.endTime),
         title: input.title,
         description: input.description,
+        category: input.category,
       });
-      if (result.__kind__ === "Some") return toTimeSlot(result.value);
+      if (result) return toTimeSlot(result);
       return null;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: QUERY_KEY }),
@@ -148,23 +161,18 @@ export function useToggleSlot() {
       if (!actor) throw new Error("Not connected");
       const result = await (
         actor as unknown as {
-          toggleSlotComplete: (id: bigint) => Promise<
-            | {
-                __kind__: "Some";
-                value: {
-                  id: bigint;
-                  startTime: bigint;
-                  endTime: bigint;
-                  title: string;
-                  description: string;
-                  completed: boolean;
-                };
-              }
-            | { __kind__: "None" }
-          >;
+          toggleSlotComplete: (id: bigint) => Promise<{
+            id: bigint;
+            startTime: bigint;
+            endTime: bigint;
+            title: string;
+            description: string;
+            completed: boolean;
+            category: string;
+          } | null>;
         }
       ).toggleSlotComplete(BigInt(id));
-      if (result.__kind__ === "Some") return toTimeSlot(result.value);
+      if (result) return toTimeSlot(result);
       return null;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: QUERY_KEY }),

@@ -8,11 +8,17 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
+export const SlotCategory = IDL.Variant({
+  'work' : IDL.Null,
+  'personal' : IDL.Null,
+  'study' : IDL.Null,
+});
 export const CreateSlotArgs = IDL.Record({
   'startTime' : IDL.Int,
   'title' : IDL.Text,
   'endTime' : IDL.Int,
   'description' : IDL.Text,
+  'category' : SlotCategory,
 });
 export const SlotId = IDL.Nat;
 export const TimeSlotView = IDL.Record({
@@ -22,6 +28,7 @@ export const TimeSlotView = IDL.Record({
   'endTime' : IDL.Int,
   'completed' : IDL.Bool,
   'description' : IDL.Text,
+  'category' : SlotCategory,
 });
 export const UpdateSlotArgs = IDL.Record({
   'id' : SlotId,
@@ -29,6 +36,7 @@ export const UpdateSlotArgs = IDL.Record({
   'title' : IDL.Text,
   'endTime' : IDL.Int,
   'description' : IDL.Text,
+  'category' : SlotCategory,
 });
 
 export const idlService = IDL.Service({
@@ -42,11 +50,17 @@ export const idlService = IDL.Service({
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
+  const SlotCategory = IDL.Variant({
+    'work' : IDL.Null,
+    'personal' : IDL.Null,
+    'study' : IDL.Null,
+  });
   const CreateSlotArgs = IDL.Record({
     'startTime' : IDL.Int,
     'title' : IDL.Text,
     'endTime' : IDL.Int,
     'description' : IDL.Text,
+    'category' : SlotCategory,
   });
   const SlotId = IDL.Nat;
   const TimeSlotView = IDL.Record({
@@ -56,6 +70,7 @@ export const idlFactory = ({ IDL }) => {
     'endTime' : IDL.Int,
     'completed' : IDL.Bool,
     'description' : IDL.Text,
+    'category' : SlotCategory,
   });
   const UpdateSlotArgs = IDL.Record({
     'id' : SlotId,
@@ -63,6 +78,7 @@ export const idlFactory = ({ IDL }) => {
     'title' : IDL.Text,
     'endTime' : IDL.Int,
     'description' : IDL.Text,
+    'category' : SlotCategory,
   });
   
   return IDL.Service({

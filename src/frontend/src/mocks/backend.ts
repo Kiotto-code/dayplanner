@@ -1,3 +1,4 @@
+import { SlotCategory } from "../backend";
 import type { backendInterface } from "../backend";
 
 const now = BigInt(Date.now()) * BigInt(1_000_000); // nanoseconds
@@ -11,6 +12,7 @@ const sampleSlots = [
     startTime: now - hour * BigInt(3),
     endTime: now - hour * BigInt(2),
     completed: true,
+    category: SlotCategory.personal,
   },
   {
     id: BigInt(2),
@@ -19,6 +21,7 @@ const sampleSlots = [
     startTime: now - hour,
     endTime: now - BigInt(30) * BigInt(60 * 1_000_000_000),
     completed: true,
+    category: SlotCategory.work,
   },
   {
     id: BigInt(3),
@@ -27,6 +30,7 @@ const sampleSlots = [
     startTime: now - BigInt(15) * BigInt(60 * 1_000_000_000),
     endTime: now + BigInt(45) * BigInt(60 * 1_000_000_000),
     completed: false,
+    category: SlotCategory.work,
   },
   {
     id: BigInt(4),
@@ -35,6 +39,7 @@ const sampleSlots = [
     startTime: now + hour,
     endTime: now + hour * BigInt(2),
     completed: false,
+    category: SlotCategory.personal,
   },
   {
     id: BigInt(5),
@@ -43,6 +48,7 @@ const sampleSlots = [
     startTime: now + hour * BigInt(2),
     endTime: now + hour * BigInt(3),
     completed: false,
+    category: SlotCategory.work,
   },
 ];
 
@@ -55,6 +61,7 @@ export const mockBackend: backendInterface = {
     startTime: args.startTime,
     endTime: args.endTime,
     completed: false,
+    category: args.category,
   }),
   deleteSlot: async (_id) => true,
   toggleSlotComplete: async (id) => {
@@ -65,6 +72,6 @@ export const mockBackend: backendInterface = {
   updateSlot: async (args) => {
     const slot = sampleSlots.find((s) => s.id === args.id);
     if (!slot) return null;
-    return { ...slot, ...args };
+    return { ...slot, ...args, category: args.category };
   },
 };

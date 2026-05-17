@@ -2,6 +2,8 @@ import Time "mo:core/Time";
 
 module {
   public type SlotId = Nat;
+  public type SlotCategory = { #work; #personal; #study };
+
 
   public type TimeSlot = {
     id : SlotId;
@@ -10,6 +12,7 @@ module {
     var title : Text;
     var description : Text;
     var completed : Bool;
+    var category : SlotCategory;
   };
 
   /// Shared (serializable) view of a TimeSlot for the public API
@@ -20,6 +23,7 @@ module {
     title : Text;
     description : Text;
     completed : Bool;
+    category : SlotCategory;
   };
 
   public type CreateSlotArgs = {
@@ -27,6 +31,7 @@ module {
     endTime : Int;
     title : Text;
     description : Text;
+    category : SlotCategory;
   };
 
   public type UpdateSlotArgs = {
@@ -35,5 +40,6 @@ module {
     endTime : Int;
     title : Text;
     description : Text;
+    category : SlotCategory;
   };
 };

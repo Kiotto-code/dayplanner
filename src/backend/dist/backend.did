@@ -1,5 +1,6 @@
 type UpdateSlotArgs = 
  record {
+   category: SlotCategory;
    description: text;
    endTime: int;
    id: SlotId;
@@ -8,6 +9,7 @@ type UpdateSlotArgs =
  };
 type TimeSlotView = 
  record {
+   category: SlotCategory;
    completed: bool;
    description: text;
    endTime: int;
@@ -16,8 +18,15 @@ type TimeSlotView =
    title: text;
  };
 type SlotId = nat;
+type SlotCategory = 
+ variant {
+   personal;
+   study;
+   work;
+ };
 type CreateSlotArgs = 
  record {
+   category: SlotCategory;
    description: text;
    endTime: int;
    startTime: int;
